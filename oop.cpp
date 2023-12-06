@@ -1,20 +1,25 @@
-#include <iostream>
+#include<iostream>
+#include<cmath>
 using namespace std;
 
-void swapNumbers(int &x, int &y)
-{
-    int temp = x;
-    x = y;
-    y = temp;
-}
 
 int main()
 {
-    int first = 100, last = 200;
+    int number    = 1;
+    bool is_prime = true;
 
-    swapNumbers(first, last);
+    if(number == 0 || number == 1){
+        is_prime = false;
+    }
 
-    cout << first << "\t" << last << endl;
+    for(int i=2; i <= number/2; i++){
+        if(number % i == 0){
+            is_prime = false;
+            break;
+        }
+    }
+
+    cout << (is_prime ? "This is prime number" : "This is not prime number") << endl;
 
     return 0;
 }
