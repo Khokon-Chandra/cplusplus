@@ -19,6 +19,8 @@ int main()
         }
     }
 
+    cout << rand() << endl;
+
     cout << (is_prime ? "This is prime number" : "This is not prime number") << endl;
 
     return 0;
