@@ -12,15 +12,15 @@ public:
 
 bool compare(const Date &date1, const Date &date2)
 {
-    if (date1.year > date2.year)
-        return false;
+    if (date1.year < date2.year)
+        return true;
 
-    if (date1.month > date2.month && date1.year == date2.year)
-        return false;
+    if (date1.month < date2.month && date1.year == date2.year)
+        return true;
 
-    if (date1.day > date2.day && date1.year == date2.year)
-        return false;
-    return true;
+    if (date1.day < date2.day && date1.year == date2.year)
+        return true;
+    return false;
 }
 
 void sortDate(Date dates[], int n)
