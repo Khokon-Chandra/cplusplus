@@ -12,8 +12,9 @@ int main()
         {'b',2},
         {'c',3}
     };
-
-    cout << nums.at('a') << endl;
+    
+    nums['k'] = 20;
+    cout << nums.at('k') << endl;
 
     return 0;
 }
