@@ -13,17 +13,6 @@ struct ListNode
 class Solution
 {
 public:
-    int lengthOfLinkedlist(ListNode *head)
-    {
-        ListNode *temp = head;
-        int count = 0;
-        while (temp != NULL)
-        {
-            temp = temp->next;
-            count++;
-        }
-        return count;
-    }
 
     void insert(ListNode *head, int val)
     {
@@ -53,36 +42,8 @@ public:
         cout << endl;
     }
 
-    int length(ListNode *head)
-    {
-        int count = 0;
-        ListNode *temp = head;
-        while (temp != NULL)
-        {
-            count++;
-            temp = temp->next;
-        }
-        return count;
-    }
-
-    ListNode *removeNthFromEnd(ListNode *head, int n)
-    {
-        ListNode *current = head;
-        ListNode *previous;
-        int length = this->lengthOfLinkedlist(head) - n;
-
-        while (length > 0)
-        {
-            previous = current;
-            current = current->next;
-            length--;
-        }
-
-        previous->next = current->next;
-
-        return head;
-    }
-
+   
+    
     ListNode *reverse(ListNode* head)
     {
         ListNode* temp = head;
@@ -102,6 +63,29 @@ public:
         }
         return prev;
     }
+
+
+    bool isPalindrome(ListNode* head)
+    {
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while(fast and fast->next){
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+
+        slow = this->reverse(slow);
+        
+        while(slow){
+            if(slow->val != head->val) return false;
+            slow = slow->next;
+            head = head->next;
+        }
+
+        return true;
+    }
+
 };
 
 int main()
@@ -110,10 +94,13 @@ int main()
     ListNode *head = new ListNode(1);
     solution.insert(head, 2);
     solution.insert(head, 3);
-    solution.insert(head, 4);
-    solution.insert(head, 5);
-    head = solution.reverse(head);
-    solution.display(head);
+    solution.insert(head, 3);
+    solution.insert(head, 2);
+    solution.insert(head, 1);
+    // solution.display(head);
+    bool isPalindrome = solution.isPalindrome(head);
+
+    cout << "This palindrom=" << isPalindrome << endl;
   
     return 0;
 }
