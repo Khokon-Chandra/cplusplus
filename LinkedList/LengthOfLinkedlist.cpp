@@ -90,6 +90,10 @@ int main(){
     solution.insert(head,4);
     solution.insert(head,5);
     solution.display(head);
-    cout << solution.length(head) <<endl;
+    ListNode* head1 = head;
+    solution.insert(head1,6);
+    ListNode* head2 = new ListNode(7, head1);
+    solution.display(head2);
+    cout << solution.length(head2) <<endl;
     return 0;
 }
