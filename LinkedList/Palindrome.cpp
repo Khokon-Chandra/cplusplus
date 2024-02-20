@@ -46,7 +46,6 @@ public:
     
     ListNode *reverse(ListNode* head)
     {
-        ListNode* temp = head;
         ListNode* current = head;
         ListNode* prev    = NULL;
         ListNode* next;
@@ -93,10 +92,9 @@ int main()
     Solution solution;
     ListNode *head = new ListNode(1);
     solution.insert(head, 2);
-    solution.insert(head, 3);
-    solution.insert(head, 3);
     solution.insert(head, 2);
     solution.insert(head, 1);
+
     // solution.display(head);
     bool isPalindrome = solution.isPalindrome(head);
 
