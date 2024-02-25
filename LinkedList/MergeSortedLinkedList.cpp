@@ -41,70 +41,30 @@ public:
         cout << endl;
     }
 
-    ListNode *reverse(ListNode *head)
-    {
-        ListNode *current = head;
-        ListNode *prev = NULL;
-        ListNode *next;
-
-        if (head == NULL)
-        {
-            return NULL;
-        }
-
-        while (current)
-        {
-            next = current->next;
-            current->next = prev;
-            prev = current;
-            current = next;
-        }
-        return prev;
-    }
-
-    ListNode *sort(ListNode *head)
-    {
-        ListNode *current = head;
-
-        int prev;
-
-        while (current)
-        {
-
-            ListNode *temp = head;
-
-            while (temp)
-            {
-                if (current->val < temp->val)
-                {
-                    prev = current->val;
-                    current->val = temp->val;
-                    temp->val = prev;
-                }
-
-                cout << "curr = " << current->val << " temp=" << temp->val << endl;
-
-                temp = temp->next;
-            }
-
-            current = current->next;
-        }
-
-        return head;
-    }
-
     ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
     {
-        ListNode *temp = list1;
+        ListNode *dummy = new ListNode(0);
 
-        while (temp and temp->next)
+        ListNode *temp = dummy;
+
+        while (list1 and list2)
+        {
+            if (list1->val <= list2->val)
+            {
+                temp->next = list1;
+                list1 = list1->next;
+            }
+            else
+            {
+                temp->next = list2;
+                list2 = list2->next;
+            }
             temp = temp->next;
+        }
 
-        temp->next = list2;
+        temp->next = list1 ? list1 : list2;
 
-        list1 = sort(list1);
-
-        return list1;
+        return dummy->next;
     }
 };
 
